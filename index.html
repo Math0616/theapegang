@@ -30,10 +30,17 @@
 
   .gallery {
     display: grid;
-    grid-template-columns: repeat(6, 1fr); /* Adjust the number of columns as needed */
+    grid-template-columns: repeat(6, 1fr); /* 6 columns for desktop */
     gap: 10px;
     padding: 10px;
   }
+	
+	/* Media query for mobile screens - adjust "max-width" as needed */
+	@media screen and (max-width: 600px) {
+  	.gallery {
+    	grid-template-columns: 1fr; /* 1 column for mobile */
+  	}
+	}
 
   .gallery-item {
     display: none; /* Set default display to none */
