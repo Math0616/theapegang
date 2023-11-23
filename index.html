@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery</title>
+<style>
+  body {
+    background-color: black; /* Ensures the background is black */
+    color: white;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    margin: 0 auto; /* Centers the grid in the middle of the page */
+    max-width: 1400px; /* Maximum width of the grid. Adjust as necessary. */
+  }
+
+  .title-image {
+    display: block; /* Use block to allow for margin auto to work */
+    text-align: center; /* Centers inline or inline-block elements */
+    margin-top: 10px; /* Adjust as needed */
+    width: 100%; /* Full width of the container */
+  }
+
+  .title-image img {
+    max-width: 100%; /* Ensures the image is no wider than its container */
+    height: auto; /* Keeps the aspect ratio of the image */
+    display: inline-block; /* Allows text-align center in parent to work */
+  }
+
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* Adjust the number of columns as needed */
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .gallery-item {
+    display: none; /* Set default display to none */
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 10px; /* Optional, for spacing between items */
+  }
+
+  .show {
+    display: block; /* Show items when filtered */
+  }
+
+  .filter-btn.active {
+    background-color: rgba(255, 165, 0, 0.9);
+  }
+
+  .filter-btn {
+    padding: 10px 20px;
+    margin: 5px;
+    background-color: white;
+    color: black;
+    border: none;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .price-filter {
+    display: inline-block;
+    margin-right: 10px; /* Adjust as necessary */
+    color: white; /* Or the color that fits your design */
+    vertical-align: middle;
+  }
+
+  .image-container {
+    width: 100%;
+    padding-top: 100%; /* Square aspect ratio */
+  }
+
+  .image-container:hover {
+    background: rgba(255, 165, 0); /* Orange overlay on hover */
+  }
+
+  .image-container a, .image-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Image and link */
+    border-radius: 15px;
+  }
+
+  .image-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 15px;
+  }
+
+  .image-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: transparent;
+    transition: background-color 0.3s ease;
+    z-index: 2; /* Overlay */
+    border-radius: 15px;
+  }
+
+  .image-container:hover::before {
+    background: rgba(255, 165, 0, 0.2);
+  }
+
+  .price-tag {
+    position: absolute;
+    top: 10px;
+    right: 10px; /* Adjust this value so it comes after the Bitcoin logo */
+    background: rgba(255, 165, 0, 0.8);
+    padding: 2px 5px;
+    border-radius: 10px;
+    font-size: 0.9em;
+    font-weight: bold;
+    z-index: 3; /* Ensure this is above other elements */
+  }
+</style>
+</head>
+<body>
+
+<div class="title-image">
+  <a href="https://x.com/OrdinalMaxiBiz" target="_blank">
+    <img src="C:\Users\matvs\Downloads\OMB\theapegang.png" alt="Title Image">
+  </a>
+</div>
+
+<!-- Filter buttons -->
+<div id="filter-container">
+  <button class="filter-btn active" onclick="filterSelection('all')">Show All</button>
+  <button class="filter-btn" onclick="filterSelection('red')">Red Eyes (3)</button>
+  <button class="filter-btn" onclick="filterSelection('blue')">Blue Eyes (2)</button>
+  <button class="filter-btn" onclick="filterSelection('green')">Green Eyes (18)</button>
+
+  <!-- Checkbox for filtering items with a price-tag -->
+  <label class="price-filter" style="float: right;">
+    <input type="checkbox" id="price-filter-checkbox">
+    Listed Only
+  </label>
+</div>
+
+<div class="gallery">
+  <!-- Assign classes 'red', 'blue', or 'green' to gallery items based on the eye color -->
+  <div class="gallery-item green">
+    <a href="https://magiceden.io/ordinals/item-details/4cf9254ac5496b1c8b7779c048c6837d0cfede5ba5b7e2d8b19cad2de9fdf127i0" target="_blank">
+      <div class="image-container">
+        <img src="https://ord-mirror.magiceden.dev/content/4cf9254ac5496b1c8b7779c048c6837d0cfede5ba5b7e2d8b19cad2de9fdf127i0" alt="Ordinal Maxi Biz #431">
+      </div>
+    </a>
+  </div>  <div class="gallery-item green">
+    <a href="https://magiceden.io/ordinals/item-details/1eb0f0f509cf9d2cf1686e4fe15f0f3f54d55c0331cb5965a91a4e2efac22a3fi0" target="_blank">
+      <div class="image-container">
+        <img src="https://ord-mirror.magiceden.dev/content/1eb0f0f509cf9d2cf1686e4fe15f0f3f54d55c0331cb5965a91a4e2efac22a3fi0" alt="Ordinal Maxi Biz #445">
+        <div class="price-tag">
+	  ₿0.7038
+	</div>
+      </div>
+    </a>
+  </div>  <div class="gallery-item green">
+    <a href="https://magiceden.io/ordinals/item-details/fdaa88df756982aa81d0119f0b474c53531a879389bc8990b37f0e9c66afe0bdi0" target="_blank">
+      <div class="image-container">
+        <img src="https://ord-mirror.magiceden.dev/content/fdaa88df756982aa81d0119f0b474c53531a879389bc8990b37f0e9c66afe0bdi0" alt="Ordinal Maxi Biz #526">
+      </div>
+    </a>
+  </div>  <div class="gallery-item green">
+    <a href="https://magiceden.io/ordinals/item-details/5f619cedcfc6febbf2a8207209867f5d485e97cc53627f1f3f3369b1ef3f72bbi0" target="_blank">
+      <div class="image-container">
+        <img src="https://ord-mirror.magiceden.dev/content/5f619cedcfc6febbf2a8207209867f5d485e97cc53627f1f3f3369b1ef3f72bbi0" alt="Ordinal Maxi Biz #601">
+      </div>
+    </a>
+  </div>  <div class="gallery-item green">
+    <a href="https://magiceden.io/ordinals/item-details/5a50cdf57d981a3e561d9987d815bbb8c2e782e675ad914027ee1e49f09616c7i0" target="_blank">
+      <div class="image-container">
+        <img src="https://ord-mirror.magiceden.dev/content/5a50cdf57d981a3e561d9987d815bbb8c2e782e675ad914027ee1e49f09616c7i0" alt="Ordinal Maxi Biz #602">
+      </div>
+    </a>
+  </div>  <div class="gallery-item green">
+    <a href="https://magiceden.io/ordinals/item-details/60d3eed479264f347acdeae90d72b333e62c864ce7611ef23c900da2acbad5dbi0" target="_blank">
+      <div class="image-container">
+        <img src="https://ord-mirror.magiceden.dev/content/60d3eed479264f347acdeae90d72b333e62c864ce7611ef23c900da2acbad5dbi0" alt="Ordinal Maxi Biz #670">
+      </div>
+    </a>
+  </div>  <div class="gallery-item green">
+    <a href="https://magiceden.io/ordinals/item-details/58dfb31cf8c5e88fd5d4e8bea4e2996769c5048f1c384b531ec9470118ada8f5i0" target="_blank">
+      <div class="image-container">
+        <img src="https://ord-mirror.magiceden.dev/content/58dfb31cf8c5e88fd5d4e8bea4e2996769c5048f1c384b531ec9470118ada8f5i0" alt="Ordinal Maxi Biz #992">
+        <div class="price-tag">
+	  ₿0.68034
+	</div>
+      </div>
+    </a>
+  </div>  <div class="gallery-item green">
+    <a href="https://magiceden.io/ordinals/item-details/65d7e13b550d7ddc4be9cd24cdc7b69fab436c663320b772083fde4824336dcbi0" target="_blank">
+      <div class="image-container">
+        <img src="https://ord-mirror.magiceden.dev/content/65d7e13b550d7ddc4be9cd24cdc7b69fab436c663320b772083fde4824336dcbi0" alt="Ordinal Maxi Biz #1000">
+      </div>
+    </a>
+  </div>  <div class="gallery-item green">
+    <a href="https://magiceden.io/ordinals/item-details/274c88a15f15cf506a3891eb11665ce39d39d3346ac4ab2c5808c2b5587a0611i0" target="_blank">
+      <div class="image-container">
+        <img src="https://ord-mirror.magiceden.dev/content/274c88a15f15cf506a3891eb11665ce39d39d3346ac4ab2c5808c2b5587a0611i0" alt="Ordinal Maxi Biz #1099">
+        <div class="price-tag">
+	  ₿2.04
+	</div>
+      </div>
+    </a>
+  </div>  <div class="gallery-item green">
+    <a href="https://magiceden.io/ordinals/item-details/e6310718d1ac8d381f52fbedc9a85b917f755bb37325ea497565a3920299e45ai0" target="_blank">
+      <div class="image-container">
+        <img src="https://ord-mirror.magiceden.dev/content/e6310718d1ac8d381f52fbedc9a85b917f755bb37325ea497565a3920299e45ai0" alt="Ordinal Maxi Biz #1276">
+      </div>
+    </a>
+  </div>
+  <div class="gallery-item green">
+    <a href="https://magiceden.io/ordinals/item-details/95f77c6f696519f3f992d421f2f4596fb5147b73e6c86896307e1ac747d40ef3i0" target="_blank">
+      <div class="image-container">
+        <img src="https://ord-mirror.magiceden.dev/content/95f77c6f696519f3f992d421f2f4596fb5147b73e6c86896307e1ac747d40ef3i0" alt="Ordinal Maxi Biz #1357">
+      </div>
+    </a>
+  </div>
+  <div class="gallery-item green">
+    <a href="https://magiceden.io/ordinals/item-details/eb1ce372c14bd736e14f3287587ba779ec8b5d7c0d20d3ead4bc711163eec561i0" target="_blank">
+      <div class="image-container">
+        <img src="https://ord-mirror.magiceden.dev/content/eb1ce372c14bd736e14f3287587ba779ec8b5d7c0d20d3ead4bc711163eec561i0" alt="Ordinal Maxi Biz #1536">
+      </div>
+    </a>
+  </div>
+  <div class="gallery-item green">
+    <a href="https://magiceden.io/ordinals/item-details/197381205a2f3528be0bc965088220dd092bf993d40469a43392c9671aa75817i0" target="_blank">
+      <div class="image-container">
+        <img src="https://ord-mirror.magiceden.dev/content/197381205a2f3528be0bc965088220dd092bf993d40469a43392c9671aa75817i0" alt="Ordinal Maxi Biz #1912">
+        <div class="price-tag">
+	  ₿1.02
+	</div>
+      </div>
+    </a>
+  </div>
+  <div class="gallery-item green">
+    <a href="https://magiceden.io/ordinals/item-details/a94b61899dd21ca361c1b0452f025273491dd756fa8a1024fea5d635a5f50cd3i0" target="_blank">
+      <div class="image-container">
+        <img src="https://ord-mirror.magiceden.dev/content/a94b61899dd21ca361c1b0452f025273491dd756fa8a1024fea5d635a5f50cd3i0" alt="Ordinal Maxi Biz #1920">
+      </div>
+    </a>
+  </div>
+  <div class="gallery-item green">
+    <a href="https://magiceden.io/ordinals/item-details/e41016471516f47f2e61ac5a20b25e0d0ff3d17eb7067436e4116a4101321f14i0" target="_blank">
+      <div class="image-container">
+        <img src="https://ord-mirror.magiceden.dev/content/e41016471516f47f2e61ac5a20b25e0d0ff3d17eb7067436e4116a4101321f14i0" alt="Ordinal Maxi Biz #1921">
+      </div>
+    </a>
+  </div>
+  <div class="gallery-item green">
+    <a href="https://magiceden.io/ordinals/item-details/4f2e758e479dda702b16253ded14045a9dfad4d35595ddf3f16d76b9576185edi0" target="_blank">
+      <div class="image-container">
+        <img src="https://ord-mirror.magiceden.dev/content/4f2e758e479dda702b16253ded14045a9dfad4d35595ddf3f16d76b9576185edi0" alt="Ordinal Maxi Biz #1996">
+      </div>
+    </a>
+  </div>
+  <div class="gallery-item green">
+    <a href="https://magiceden.io/ordinals/item-details/342ac1aef7802aa822f91c370071758b608a80e9a3c7edf0f25dcd7bf3bdddd8i0" target="_blank">
+      <div class="image-container">
+        <img src="https://ord-mirror.magiceden.dev/content/342ac1aef7802aa822f91c370071758b608a80e9a3c7edf0f25dcd7bf3bdddd8i0" alt="Ordinal Maxi Biz #2010">
+        <div class="price-tag">
+	  ₿1.53
+	</div>
+      </div>
+    </a>
+  </div>
+  <div class="gallery-item green">
+    <a href="https://magiceden.io/ordinals/item-details/3d1e88ae1070ccf623a8fd13380b474e64b768388c59119730ea4aa386fdc40di0" target="_blank">
+      <div class="image-container">
+        <img src="https://ord-mirror.magiceden.dev/content/3d1e88ae1070ccf623a8fd13380b474e64b768388c59119730ea4aa386fdc40di0" alt="Ordinal Maxi Biz #2056">
+      </div>
+    </a>
+  </div>
+  <div class="gallery-item red">
+    <a href="https://magiceden.io/ordinals/item-details/aaf75d277513aef8bfead6defdcf98cdb42facc075bc62afd3bab5bc3a85dca9i0" target="_blank">
+      <div class="image-container">
+        <img src="https://ord-mirror.magiceden.dev/content/aaf75d277513aef8bfead6defdcf98cdb42facc075bc62afd3bab5bc3a85dca9i0" alt="Ordinal Maxi Biz #144783">
+      </div>
+    </a>
+  </div>
+  <div class="gallery-item red">
+    <a href="https://magiceden.io/ordinals/item-details/8c6a3038de3aafd48270b8891d211437cd0444a37af821b1fd85d430cc4e90fdi0" target="_blank">
+      <div class="image-container">
+        <img src="https://ord-mirror.magiceden.dev/content/8c6a3038de3aafd48270b8891d211437cd0444a37af821b1fd85d430cc4e90fdi0" alt="Ordinal Maxi Biz #237631">
+      </div>
+    </a>
+  </div>
+  <div class="gallery-item red">
+    <a href="https://magiceden.io/ordinals/item-details/2455c3b97ad97be251ca4c82a0da66c1c583e218e3e527d2f87ed61bdcdc7018i0" target="_blank">
+      <div class="image-container">
+        <img src="https://ord-mirror.magiceden.dev/content/2455c3b97ad97be251ca4c82a0da66c1c583e218e3e527d2f87ed61bdcdc7018i0" alt="Ordinal Maxi Biz #237754">
+      </div>
+    </a>
+  </div>
+  <div class="gallery-item blue">
+    <a href="https://magiceden.io/ordinals/item-details/6cbb14fd958c5e734c929b0a288497d9ab072288642275b784db2de797d0b768i0" target="_blank">
+      <div class="image-container">
+        <img src="https://ord-mirror.magiceden.dev/content/6cbb14fd958c5e734c929b0a288497d9ab072288642275b784db2de797d0b768i0" alt="Ordinal Maxi Biz #965235">
+      </div>
+    </a>
+  </div>
+  <div class="gallery-item blue">
+    <a href="https://magiceden.io/ordinals/item-details/1c8594b6ee351674ffc04a4ba28cb5a6500690ce4fe6d66549e920b0b4b14412i0" target="_blank">
+      <div class="image-container">
+        <img src="https://ord-mirror.magiceden.dev/content/1c8594b6ee351674ffc04a4ba28cb5a6500690ce4fe6d66549e920b0b4b14412i0" alt="Ordinal Maxi Biz #965714">
+      </div>
+    </a>
+  </div>
+</div>
+
+<script>
+function filterSelection(color) {
+  var elements = document.getElementsByClassName('gallery-item');
+  for (var i = 0; i < elements.length; i++) {
+    if (color === 'all' || elements[i].classList.contains(color)) {
+      w3AddClass(elements[i], 'show');
+    } else {
+      w3RemoveClass(elements[i], 'show');
+    }
+  }
+}
+
+function w3AddClass(element, name) {
+  var arr1 = element.className.split(" ");
+  if (arr1.indexOf(name) === -1) {
+    element.className += " " + name;
+  }
+}
+
+function w3RemoveClass(element, name) {
+  var arr1 = element.className.split(" ");
+  var index = arr1.indexOf(name);
+  if (index > -1) {
+    arr1.splice(index, 1);
+  }
+  element.className = arr1.join(" ");
+}
+
+var btnContainer = document.getElementById("filter-container");
+var btns = btnContainer.getElementsByClassName("filter-btn");
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function() {
+    var current = document.getElementsByClassName("active");
+    if (current.length > 0) {
+      current[0].className = current[0].className.replace(" active", "");
+    }
+    this.className += " active";
+  });
+}
+
+document.getElementById('price-filter-checkbox').addEventListener('change', function() {
+  var elements = document.getElementsByClassName('gallery-item');
+  var isChecked = this.checked;
+
+  for (var i = 0; i < elements.length; i++) {
+    // Check if the item has a price tag
+    var hasPriceTag = elements[i].getElementsByClassName('price-tag').length > 0;
+
+    if (isChecked && hasPriceTag) {
+      elements[i].style.display = 'block';
+    } else if (isChecked && !hasPriceTag) {
+      elements[i].style.display = 'none';
+    } else {
+      elements[i].style.display = ''; // Or use 'block' to show all
+    }
+  }
+});
+
+// Initially display all items
+filterSelection('all');
+</script>
+
+</body>
+</html>
