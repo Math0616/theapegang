@@ -18,9 +18,6 @@ document.addEventListener('DOMContentLoaded', function() {
 			}
 		});
 
-        // Fetch price data
-        fetchPriceData(image.tokenId, galleryItem);
-
         // Set initial display to block
         galleryItem.style.display = 'block';
 
@@ -28,6 +25,13 @@ document.addEventListener('DOMContentLoaded', function() {
 		const link = document.createElement('a');
 		link.href = `https://magiceden.io/ordinals/item-details/${image.tokenId}`;
 		link.target = "_blank";
+
+        const options = {method: 'GET', headers: {accept: 'application/json', 'Authorization': "Bearer ca4dcecc-5284-49e0-9c1d-0bbfb2001e7e"}};
+
+        fetch('https://api-mainnet.magiceden.dev/v2/ord/btc/tokens?tokenIds=${image.tokenId}&showAll=true&sortBy=priceAsc', options)
+        .then(response => response.json())
+        .then(response => console.log(response))
+        .catch(err => console.error(err));
 
 		// Create image container
 		const imageContainer = document.createElement('div');
@@ -77,22 +81,6 @@ const imageObserver = new IntersectionObserver((entries, observer) => {
 lazyImages.forEach(img => {
 	imageObserver.observe(img);
 });
-}
-
-function fetchPriceData(tokenId, galleryItem) {
-    // Replace 'YOUR_VERCEL_URL' with your actual Vercel preview or production URL
-    const vercelProxyURL = `https://theapegang-bqcmgi7pn-theapegangs-projects-82aa3757.vercel.app/api/proxy?tokenId=${tokenId}`;
-
-    fetch(vercelProxyURL)
-        .then(response => response.json())
-        .then(response => console.log(response))
-        .then(data => {
-            // Check if there is a listed price and add price tag
-            if (data && data.length > 0 && data[0].price) {
-                addPriceTag(galleryItem, data[0].price);
-            }
-        })
-        .catch(err => console.error('Error fetching price data:', err));
 }
 
 function addPriceTag(galleryItem, price) {
