@@ -18,6 +18,9 @@ document.addEventListener('DOMContentLoaded', function() {
 			}
 		});
 
+        // Set initial display to block
+        galleryItem.style.display = 'block';
+
 		// Create link element
 		const link = document.createElement('a');
 		link.href = `https://magiceden.io/ordinals/item-details/${image.tokenId}`;
@@ -60,6 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Initialize filter buttons
     initializeFilterButtons();
+    simulateInitialFilterClick(); // Simulate click on 'Show All' button
 });  
 
 function initializeLazyLoad() {
@@ -78,6 +82,13 @@ const imageObserver = new IntersectionObserver((entries, observer) => {
 lazyImages.forEach(img => {
 	imageObserver.observe(img);
 });
+}
+
+function simulateInitialFilterClick() {
+    const showAllButton = document.querySelector('.filter-btn.active');
+    if (showAllButton) {
+        showAllButton.click();
+    }
 }
 
 function initializeFilterButtons() {
