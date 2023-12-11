@@ -80,7 +80,7 @@ lazyImages.forEach(img => {
 }
 
 function fetchPriceData(tokenId, galleryItem) {
-    const options = {method: 'GET', headers: {accept: 'application/json', Authorization: Bearer ca4dcecc-5284-49e0-9c1d-0bbfb2001e7e}};
+    const options = {method: 'GET', headers: {accept: 'application/json', Authorization: 'Bearer ca4dcecc-5284-49e0-9c1d-0bbfb2001e7e'}};
     const apiUrl = `https://api-mainnet.magiceden.dev/v2/ord/btc/tokens?tokenIds=${tokenId}&showAll=true&sortBy=priceAsc`;
 
     fetch(apiUrl, options)
