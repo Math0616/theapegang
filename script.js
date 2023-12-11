@@ -87,7 +87,7 @@ function fetchPriceData(tokenId, galleryItem) {
         .then(response => response.json())
         .then(response => console.log(response))
         .then(data => {
-            // Check if there is a listed price and add price tag
+            // Check if there is a listed price and add price tag.
             if (data && data.length > 0 && data[0].price) {
                 addPriceTag(galleryItem, data[0].price);
             }
