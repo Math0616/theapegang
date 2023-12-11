@@ -14,33 +14,33 @@
 			padding: 0;
 			margin: 0 auto; /* Centers the grid in the middle of the page */
 			max-width: 1400px; /* Maximum width of the grid. Adjust as necessary. */
-		}
+			}
 
 		.title-image {
 			display: block; /* Use block to allow for margin auto to work */
 			text-align: center; /* Centers inline or inline-block elements */
 			margin-top: 10px; /* Adjust as needed */
 			width: 100%; /* Full width of the container */
-		}
+			}
 
 		.title-image img {
 			max-width: 100%; /* Ensures the image is no wider than its container */
 			height: auto; /* Keeps the aspect ratio of the image */
 			display: inline-block; /* Allows text-align center in parent to work */
-		}
+			}
 
 		.gallery {
 			display: grid;
 			grid-template-columns: repeat(6, 1fr); /* 6 columns for desktop */
 			gap: 10px;
 			padding: 10px;
-		}
+			}
 			
 			/* Media query for mobile screens - adjust "max-width" as needed */
 			@media screen and (max-width: 700px) {
 			.gallery {
 				grid-template-columns: repeat(2, 1fr); /* 2 columns for mobile */
-			}
+				}
 			}
 
 		.gallery-item {
@@ -49,15 +49,15 @@
 			border-radius: 15px;
 			overflow: hidden;
 			margin-bottom: 10px; /* Optional, for spacing between items */
-		}
+			}
 
 		.show {
 			display: block; /* Show items when filtered */
-		}
+			}
 
 		.filter-btn.active {
 			background-color: rgba(255, 165, 0, 0.9);
-		}
+			}
 
 		.filter-btn {
 			padding: 5px 10px;
@@ -68,23 +68,23 @@
 			font-weight: bold;
 			border-radius: 7px;
 			cursor: pointer;
-		}
+			}
 
 		.price-filter {
 			display: inline-block;
 			margin-right: 10px; /* Adjust as necessary */
 			color: white; /* Or the color that fits your design */
 			vertical-align: middle;
-		}
+			}
 
 		.image-container {
 			width: 100%;
 			padding-top: 100%; /* Square aspect ratio */
-		}
+			}
 
 		.image-container:hover {
 			background: rgba(255, 165, 0); /* Orange overlay on hover */
-		}
+			}
 
 		.image-container a, .image-container img {
 			position: absolute;
@@ -94,7 +94,7 @@
 			height: 100%;
 			z-index: 1; /* Image and link */
 			border-radius: 15px;
-		}
+			}
 
 		.image-container img {
 			position: absolute;
@@ -104,7 +104,7 @@
 			height: 100%;
 			object-fit: contain;
 			border-radius: 15px;
-		}
+			}
 
 		.image-container::before {
 			content: '';
@@ -117,11 +117,11 @@
 			transition: background-color 0.3s ease;
 			z-index: 2; /* Overlay */
 			border-radius: 15px;
-		}
+			}
 
 		.image-container:hover::before {
 			background: rgba(255, 165, 0, 0.2);
-		}
+			}
 
 		.price-tag {
 			position: absolute;
@@ -133,10 +133,24 @@
 			font-size: 0.9em;
 			font-weight: bold;
 			z-index: 3; /* Ensure this is above other elements */
-		}
+			}
+
+		#top-right-text {
+			position: absolute; /* Fixed position relative to the viewport */
+			top: 5px; /* Distance from the top of the viewport */
+			right: 5px; /* Distance from the right of the viewport */
+			text-align: right; /* Align text to the right */
+			margin-bottom: 20px; /* Adjust as needed */
+			color: white; /* Text color */
+			font-size: 12px; /* Adjust font size as needed */
+			z-index: 999; /* Ensures it stays above other elements */
+			}
 	</style>
 </head>
 <body>
+
+<!-- Bitcoin Address for donation here -->
+<div id="top-right-text">33bwFiruMQEN78MuBqWZsrHsVSbxnQAacS</div>
 
 	<div class="title-image">
 	<a href="https://x.com/TheApeGang" target="_blank">
