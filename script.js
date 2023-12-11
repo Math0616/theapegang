@@ -10,9 +10,6 @@ document.addEventListener('DOMContentLoaded', function() {
 		const galleryItem = document.createElement('div');
 		galleryItem.classList.add('gallery-item');
 
-		// Setting the 'number' data attribute
-		galleryItem.dataset.number = Array.isArray(image.number) ? image.number.join(', ') : image.number.toString();
-
 		// Set eyeColor and other optional attributes as data attributes
 		const attributes = ['eyeColor'];
 		attributes.forEach(attr => {
@@ -35,21 +32,6 @@ document.addEventListener('DOMContentLoaded', function() {
 		img.dataset.src = imageUrl;
 		img.alt = `Ordinal Maxi Biz #${image.tokenId}`;
 		img.classList.add('lazyload');
-
-		let hoverTimeout; // Variable to store the hover state timeout
-
-		// Add mouseover event listener with a delay for the tooltip
-		img.addEventListener('mouseover', function(event) {
-			hoverTimeout = setTimeout(function() {
-				showTooltip(event, image);
-			}, 1000); // Delay of 1 second
-		});
-
-		// Add mouseout event listener to hide tooltip and clear the hover timeout
-		img.addEventListener('mouseout', function() {
-			clearTimeout(hoverTimeout);
-			hideTooltip();
-		});
 
 		// Append image to its container
 		imageContainer.appendChild(img);
