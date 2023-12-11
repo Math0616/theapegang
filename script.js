@@ -80,14 +80,14 @@ lazyImages.forEach(img => {
 }
 
 function fetchPriceData(tokenId, galleryItem) {
-    const options = {method: 'GET', headers: {accept: 'application/json', Authorization: 'Bearer 626041ee-c0c2-4e41-9cf8-969e979fc2e5'}};
-    const apiUrl = `https://api-mainnet.magiceden.dev/v2/ord/btc/tokens?tokenIds=${tokenId}&showAll=true&sortBy=priceAsc`;
+    // Replace 'YOUR_VERCEL_URL' with your actual Vercel preview or production URL
+    const vercelProxyURL = `https://theapegang-40nk6l118-theapegangs-projects-82aa3757.vercel.app/api/proxy?tokenId=${tokenId}`;
 
-    fetch(apiUrl, options)
+    fetch(vercelProxyURL)
         .then(response => response.json())
         .then(response => console.log(response))
         .then(data => {
-            // Check if there is a listed price and add price tag.
+            // Check if there is a listed price and add price tag
             if (data && data.length > 0 && data[0].price) {
                 addPriceTag(galleryItem, data[0].price);
             }
