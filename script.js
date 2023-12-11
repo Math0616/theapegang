@@ -81,7 +81,7 @@ lazyImages.forEach(img => {
 
 function fetchPriceData(tokenId, galleryItem) {
     // Replace 'YOUR_VERCEL_URL' with your actual Vercel preview or production URL
-    const vercelProxyURL = `https://theapegang-40nk6l118-theapegangs-projects-82aa3757.vercel.app/api/proxy?tokenId=${tokenId}`;
+    const vercelProxyURL = `https://theapegang-bqcmgi7pn-theapegangs-projects-82aa3757.vercel.app/api/proxy?tokenId=${tokenId}`;
 
     fetch(vercelProxyURL)
         .then(response => response.json())
