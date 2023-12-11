@@ -18,6 +18,9 @@ document.addEventListener('DOMContentLoaded', function() {
 			}
 		});
 
+        // Fetch price data
+        fetchPriceData(image.tokenId, galleryItem);
+
         // Set initial display to block
         galleryItem.style.display = 'block';
 
@@ -44,14 +47,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		// Append link to gallery item
 		galleryItem.appendChild(link);
-
-		// Price tag with Bitcoin symbol
-		if (image.price) {
-			const priceTag = document.createElement('div');
-			priceTag.classList.add('price-tag');
-			priceTag.textContent = `₿${image.price}`;
-			galleryItem.appendChild(priceTag);
-		}
 
 		// Append gallery item to gallery
 		gallery.appendChild(galleryItem);
@@ -82,6 +77,28 @@ const imageObserver = new IntersectionObserver((entries, observer) => {
 lazyImages.forEach(img => {
 	imageObserver.observe(img);
 });
+}
+
+function fetchPriceData(tokenId, galleryItem) {
+    const options = {method: 'GET', headers: {accept: 'application/json', 'Authorization': "Bearer ca4dcecc-5284-49e0-9c1d-0bbfb2001e7e"}};
+    const apiUrl = `https://api-mainnet.magiceden.dev/v2/ord/btc/tokens?tokenIds=${tokenId}&showAll=true&sortBy=priceAsc`;
+
+    fetch(apiUrl, options)
+        .then(response => response.json())
+        .then(data => {
+            // Check if there is a listed price and add price tag
+            if (data && data.length > 0 && data[0].price) {
+                addPriceTag(galleryItem, data[0].price);
+            }
+        })
+        .catch(err => console.error('Error fetching price data:', err));
+}
+
+function addPriceTag(galleryItem, price) {
+    const priceTag = document.createElement('div');
+    priceTag.classList.add('price-tag');
+    priceTag.textContent = `₿${price}`;
+    galleryItem.appendChild(priceTag);
 }
 
 function simulateInitialFilterClick() {
