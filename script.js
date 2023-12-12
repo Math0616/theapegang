@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    fetch('https://theapegang-2l5m7ebhw-theapegangs-projects-82aa3757.vercel.app/data')
+    fetch('https://theapegang-qg8q2kjke-theapegangs-projects-82aa3757.vercel.app/data')
     .then(response => response.json())
     .then(response => console.log(response))
     .catch(err => console.error(err));
