@@ -26,13 +26,6 @@ document.addEventListener('DOMContentLoaded', function() {
 		link.href = `https://magiceden.io/ordinals/item-details/${image.tokenId}`;
 		link.target = "_blank";
 
-        const options = {method: 'GET', headers: {accept: 'application/json', 'Authorization': "Bearer ca4dcecc-5284-49e0-9c1d-0bbfb2001e7e"}};
-
-        fetch('https://api-mainnet.magiceden.dev/v2/ord/btc/tokens?tokenIds=${image.tokenId}&showAll=true&sortBy=priceAsc', options, { mode: 'no-cors'})
-        .then(response => response.json())
-        .then(response => console.log(response))
-        .catch(err => console.error(err));
-
 		// Create image container
 		const imageContainer = document.createElement('div');
 		imageContainer.classList.add('image-container');
@@ -81,13 +74,6 @@ const imageObserver = new IntersectionObserver((entries, observer) => {
 lazyImages.forEach(img => {
 	imageObserver.observe(img);
 });
-}
-
-function addPriceTag(galleryItem, price) {
-    const priceTag = document.createElement('div');
-    priceTag.classList.add('price-tag');
-    priceTag.textContent = `₿${price}`;
-    galleryItem.appendChild(priceTag);
 }
 
 function simulateInitialFilterClick() {
