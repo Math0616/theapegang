@@ -1,9 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-    fetch('https://theapegang-6lj8pwwe8-theapegangs-projects-82aa3757.vercel.app/data')
-    .then(response => response.json())
-    .then(response => console.log(response))
-    .catch(err => console.error(err));
-
 	fetch('images.json')
 	.then(response => response.json())
 	.then(data => {
