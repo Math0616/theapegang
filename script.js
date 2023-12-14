@@ -1,10 +1,14 @@
 document.addEventListener('DOMContentLoaded', function() {
-	fetch('images.json')
-	.then(response => response.json())
-	.then(data => {
-		const gallery = document.querySelector('.gallery');
-		data.forEach(image => {
-		const imageUrl = `https://ord-mirror.magiceden.dev/content/${image.tokenId}`;
+    Promise.all([
+        fetch('https://ordinalmaxibiz.vercel.app/api/theapegang').then(res => res.json()),
+        fetch('images.json').then(res => res.json())
+    ])
+    .then(([apiData, imagesData]) => {
+        const mergedData = mergeData(apiData, imagesData);
+        const gallery = document.querySelector('.gallery');
+        
+        mergedData.forEach(image => {
+        const imageUrl = `https://ord-mirror.magiceden.dev/content/${image.tokenId}`;
 
 		// Create gallery item container
 		const galleryItem = document.createElement('div');
@@ -39,24 +43,46 @@ document.addEventListener('DOMContentLoaded', function() {
 		// Append image to its container
 		imageContainer.appendChild(img);
 
-		// Append image container to link
-		link.appendChild(imageContainer);
+        // Display listed price if available
+        if (image.listed) {
+            const rawPrice = image.listedPrice / 100000000; // Convert to decimal
+            const formattedPrice = rawPrice % 1 === 0 ? rawPrice.toFixed(2) : rawPrice.toString();
+            const priceInfo = `<p class="listed-price">₿${formattedPrice}</p>`; // Add class for styling
+            imageContainer.innerHTML += priceInfo; // Append the price info to the image container
+        }
 
-		// Append link to gallery item
-		galleryItem.appendChild(link);
+        // Append image container to link
+        link.appendChild(imageContainer);
 
-		// Append gallery item to gallery
-		gallery.appendChild(galleryItem);
-		});
-		
-		initializeLazyLoad(); // After adding all images to the gallery, initialize lazy loading
-	})
-	.catch(error => console.error('Error loading image data:', error));
+        // Append link to gallery item
+        galleryItem.appendChild(link);
+
+        // Append gallery item to gallery
+        gallery.appendChild(galleryItem);
+        });
+
+        initializeLazyLoad(); // Initialize lazy loading
+    })
+    .catch(error => {
+        console.error('Error loading image data:', error);
+    });
 
     // Initialize filter buttons
     initializeFilterButtons();
     simulateInitialFilterClick(); // Simulate click on 'Show All' button
-});  
+});
+
+function mergeData(apiData, imagesData) {
+    const flatApiData = apiData.flatMap(group => group.tokens);
+    return imagesData.map(image => {
+        const tokenInfo = flatApiData.find(token => token.id === image.tokenId);
+        return {
+            ...image,
+            listed: tokenInfo ? tokenInfo.listed : false,
+            listedPrice: tokenInfo && tokenInfo.listed ? tokenInfo.listedPrice : null
+        };
+    });
+}
 
 function initializeLazyLoad() {
 const lazyImages = document.querySelectorAll('img.lazyload');

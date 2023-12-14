@@ -127,6 +127,21 @@
 			font-size: 12px; /* Adjust font size as needed */
 			z-index: 999; /* Ensures it stays above other elements */
 			}
+
+		.listed-price {
+			position: absolute;
+			margin: 3px;
+			padding: 1px 3px;
+			top: 3px;
+			right: 3px;
+			background-color: rgba(255, 165, 0, 0.9);
+			color: black;
+			border: none;
+			font-weight: bold;
+			border-radius: 15px;
+			z-index: 999; /* Ensures it stays above other elements */
+			/* Add any other styles as needed */
+		}
 	</style>
 </head>
 <body>
@@ -147,6 +162,7 @@
 		<button class="filter-btn" onclick="filterSelection('blue')">Blue Eyes (2)</button>
 		<button class="filter-btn" onclick="filterSelection('green')">Green Eyes (18)</button>
 	</div>
+
 
 <div class="gallery">
 <!-- Images will be loaded here by JavaScript -->
