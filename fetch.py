@@ -14,7 +14,7 @@ def format_price(price):
         price_str += '0'
     return price_str
 
-def fetch_tokens(api_key, limit=40, max_tokens=2091):
+def fetch_tokens(api_key, token_ids, limit=40, max_tokens=2091):
     base_url = "https://api-mainnet.magiceden.dev/v2/ord/btc/tokens"
     headers = {
         "accept": "application/json",
@@ -22,44 +22,40 @@ def fetch_tokens(api_key, limit=40, max_tokens=2091):
     }
 
     all_tokens = []
-    offset = 0
-
-    with tqdm(total=max_tokens, desc="Fetching Tokens") as pbar:
-        while True:
-            url = f"{base_url}?collectionSymbol=omb&showAll=false&sortBy=priceAsc&offset={offset}&limit={limit}"
+    
+    with tqdm(total=min(max_tokens, len(token_ids)), desc="Fetching Tokens") as pbar:
+        for token_id in token_ids:
+            url = f"{base_url}?tokenIds={token_id}&showAll=false&sortBy=priceAsc"
 
             response = requests.get(url, headers=headers)
             if response.status_code != 200:
-                print(f"Failed to fetch data: {response.status_code}")
-                break
+                print(f"Failed to fetch data for token {token_id}: {response.status_code}")
+                continue
 
             data = response.json()
             tokens = data.get("tokens", [])
-            if not tokens:
-                break
-
             for token in tokens:
                 token_data = {
                     "id": token.get("id"),
                     "listedPrice": format_price(int(token.get("listedPrice", 0)))
                 }
                 all_tokens.append(token_data)
-                pbar.update(1)
 
-                if len(all_tokens) >= max_tokens:
-                    break
-
-            if len(all_tokens) >= max_tokens or len(tokens) < limit:
+            pbar.update(1)
+            if len(all_tokens) >= max_tokens:
                 break
 
-            offset += limit
-
     return all_tokens
+
+# Load token IDs from the JSON file
+with open('images.json', 'r') as file:
+    token_ids_data = json.load(file)
+    token_ids = [item['id'] for item in token_ids_data]
 
 # Your private ME API KEY
 api_key = os.environ.get('MAGICEDEN_API_KEY')
 
-tokens = fetch_tokens(api_key)
+tokens = fetch_tokens(api_key, token_ids)
 
 # Writing the list of tokens to a JSON file
 with open('tokens.json', 'w') as file:
