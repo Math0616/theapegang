@@ -1,87 +1,133 @@
 document.addEventListener('DOMContentLoaded', function() {
     Promise.all([
-        fetch('tokens.json').then(res => res.json()),
-        fetch('images.json').then(res => res.json())
+        fetch('images.json').then(response => response.json()),
+        fetch('tokens.json').then(response => response.json())
     ])
-    .then(([apiData, imagesData]) => {
-        const mergedData = mergeData(apiData, imagesData);
-        const gallery = document.querySelector('.gallery');
-        
-        mergedData.forEach(image => {
-        const imageUrl = `https://ord-mirror.magiceden.dev/content/${image.id}`;
-
-		// Create gallery item container
-		const galleryItem = document.createElement('div');
-		galleryItem.classList.add('gallery-item');
-
-		// Set eyeColor and other optional attributes as data attributes
-		const attributes = ['eyeColor'];
-		attributes.forEach(attr => {
-			if (image[attr]) {
-			galleryItem.dataset[attr] = image[attr];
-			}
-		});
-
-        // Set initial display to block
-        galleryItem.style.display = 'block';
-
-		// Create link element
-		const link = document.createElement('a');
-		link.href = `https://magiceden.io/ordinals/item-details/${image.id}`;
-		link.target = "_blank";
-
-		// Create image container
-		const imageContainer = document.createElement('div');
-		imageContainer.classList.add('image-container');
-
-		// Create and set image element
-		const img = document.createElement('img');
-		img.dataset.src = imageUrl;
-		img.alt = `Ordinal Maxi Biz #${image.id}`;
-		img.classList.add('lazyload');
-
-		// Append image to its container
-		imageContainer.appendChild(img);
-
-        // Display listed price if available
-        if (image.listedPrice && image.listedPrice !== 'undefined') {
-            const priceTag = document.createElement('div');
-            priceTag.classList.add('price-tag');
-            priceTag.textContent = `₿${image.listedPrice}`;
-            galleryItem.appendChild(priceTag);
-        }
-
-        // Append image container to link
-        link.appendChild(imageContainer);
-
-        // Append link to gallery item
-        galleryItem.appendChild(link);
-
-        // Append gallery item to gallery
-        gallery.appendChild(galleryItem);
-        });
-
-        initializeLazyLoad(); // Initialize lazy loading
+    .then(([imagesData, tokensData]) => {
+        const mergedData = mergeData(imagesData, tokensData);
+        createGallery(mergedData);
+		setupFilterEventListeners(); // Setup event listeners for filters
     })
-    .catch(error => {
-        console.error('Error loading image data:', error);
-    });
+    .catch(error => console.error('Error loading data:', error));
 
-    // Initialize filter buttons
-    initializeFilterButtons();
-    simulateInitialFilterClick(); // Simulate click on 'Show All' button
 });
 
-function mergeData(apiData, imagesData) {
-    const flatApiData = apiData.flatMap(group => group.tokens);
+function mergeData(imagesData, tokensData) {
+    const tokensMap = new Map(tokensData.map(token => [token.id, token]));
     return imagesData.map(image => {
-        const tokenInfo = flatApiData.find(token => token.id === image.id);
-        return {
-            ...image,
-            listed: tokenInfo ? tokenInfo.listed : false,
-            listedPrice: tokenInfo && tokenInfo.listed ? tokenInfo.listedPrice : null
-        };
+        const token = tokensMap.get(image.id);
+        return token ? { ...image, ...token } : image;
     });
+}
+
+function createGallery(mergedData) {
+    // Sort mergedData by listedPrice, and then by the second number if listedPrice is undefined or not present
+    mergedData.sort((a, b) => {
+        let aPrice = a.listedPrice !== 'undefined' && a.listedPrice !== undefined ? parseFloat(a.listedPrice) : Infinity;
+        let bPrice = b.listedPrice !== 'undefined' && b.listedPrice !== undefined ? parseFloat(b.listedPrice) : Infinity;
+
+        if (aPrice === Infinity && bPrice === Infinity) {
+            // Extract the second number if it exists, otherwise use the first/only number
+            let aNumber = extractSecondNumber(a.number);
+            let bNumber = extractSecondNumber(b.number);
+
+            return aNumber - bNumber;
+        } else {
+            // Sort by price when available
+            return aPrice - bPrice;
+        }
+    });
+
+    const gallery = document.querySelector('.gallery');
+    mergedData.forEach(image => {
+	const imageUrl = `https://ord-mirror.magiceden.dev/content/${image.id}`;
+
+	// Create gallery item container
+	const galleryItem = document.createElement('div');
+	galleryItem.classList.add('gallery-item');
+
+	// Setting the 'number' data attribute
+	galleryItem.dataset.number = Array.isArray(image.number) ? image.number.join(', ') : image.number.toString();
+
+	// Set the listedPrice data attribute, even if it's undefined
+	galleryItem.dataset.listedPrice = image.listedPrice;
+	galleryItem.dataset.id = image.id;
+
+	// Set eyeColor and other optional attributes as data attributes
+	const attributes = ['eyeColor', 'Female', 'Hat', 'Speaking', 'Smoking', 'NoFace', 'Demon', 'ThreePlusEyes', 'Lines', 'Earphone', 'Music', 'Hands', 'Ghost', 'Emoji', 'Crown', 'OneEye', 'Sick', 'Animal', 'Alien', 'Weapon', 'Ape', 'OpenScalp', 'Miner', 'ShadowDAO', 'LFG', 'Clown', 'Hoodie', 'OGHoodies', 'RealRef', 'Fiction', 'FreeRoss', 'Letterhead', 'Glasses', "sunGlasses", "Clean", 'Robot', 'Punk', 'Undead', 'FaceCover', 'GasMask'];
+	attributes.forEach(attr => {
+		if (image[attr]) {
+		galleryItem.dataset[attr] = image[attr];
+		}
+	});
+
+	// Create link element
+	const link = document.createElement('a');
+	link.href = `https://magiceden.io/ordinals/item-details/${image.id}`;
+	link.target = "_blank";
+
+	// Create image container
+	const imageContainer = document.createElement('div');
+	imageContainer.classList.add('image-container');
+
+	// Create and set image element
+	const img = document.createElement('img');
+	img.dataset.src = imageUrl;
+	img.alt = `Ordinal Maxi Biz #${image.id}`;
+	img.classList.add('lazyload');
+
+	let hoverTimeout; // Variable to store the hover state timeout
+
+	// Add mouseover event listener with a delay for the tooltip
+	img.addEventListener('mouseover', function(event) {
+		hoverTimeout = setTimeout(function() {
+			showTooltip(event, image);
+		}, 1000); // Delay of 1 second
+	});
+
+	// Add mouseout event listener to hide tooltip and clear the hover timeout
+	img.addEventListener('mouseout', function() {
+		clearTimeout(hoverTimeout);
+		hideTooltip();
+	});
+
+	// Append image to its container
+	imageContainer.appendChild(img);
+
+	// Append image container to link
+	link.appendChild(imageContainer);
+
+	// Append link to gallery item
+	galleryItem.appendChild(link);
+
+	// Price tag with Bitcoin symbol
+	if (image.listedPrice && image.listedPrice !== 'undefined') {
+		const priceTag = document.createElement('div');
+		priceTag.classList.add('price-tag');
+		priceTag.textContent = `₿${image.listedPrice}`;
+		galleryItem.appendChild(priceTag);
+	}
+
+	// Append gallery item to gallery
+	gallery.appendChild(galleryItem);
+
+	});
+	
+	initializeLazyLoad(); // After adding all images to the gallery, initialize lazy loading
+    initializeFilterButtons();// Initialize filter buttons
+    simulateInitialFilterClick(); // Simulate click on 'Show All' button
+
+}
+
+function extractSecondNumber(numberData) {
+    // Ensure numberData is a string
+    let numberString = String(numberData);
+
+    // Split the number string by commas and trim each part
+    let numbers = numberString.split(',').map(n => n.trim());
+
+    // Use the second number if available, otherwise the first
+    return numbers.length > 1 ? parseInt(numbers[1], 10) : parseInt(numbers[0], 10);
 }
 
 function initializeLazyLoad() {
