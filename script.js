@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', function() {
     .then(([imagesData, tokensData]) => {
         const mergedData = mergeData(imagesData, tokensData);
         createGallery(mergedData);
-		setupFilterEventListeners(); // Setup event listeners for filters
     })
     .catch(error => console.error('Error loading data:', error));
 
