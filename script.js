@@ -53,7 +53,7 @@ function createGallery(mergedData) {
 	galleryItem.dataset.id = image.id;
 
 	// Set eyeColor and other optional attributes as data attributes
-	const attributes = ['eyeColor', 'Female', 'Hat', 'Speaking', 'Smoking', 'NoFace', 'Demon', 'ThreePlusEyes', 'Lines', 'Earphone', 'Music', 'Hands', 'Ghost', 'Emoji', 'Crown', 'OneEye', 'Sick', 'Animal', 'Alien', 'Weapon', 'Ape', 'OpenScalp', 'Miner', 'ShadowDAO', 'LFG', 'Clown', 'Hoodie', 'OGHoodies', 'RealRef', 'Fiction', 'FreeRoss', 'Letterhead', 'Glasses', "sunGlasses", "Clean", 'Robot', 'Punk', 'Undead', 'FaceCover', 'GasMask'];
+	const attributes = ['eyeColor'];
 	attributes.forEach(attr => {
 		if (image[attr]) {
 		galleryItem.dataset[attr] = image[attr];
@@ -74,21 +74,6 @@ function createGallery(mergedData) {
 	img.dataset.src = imageUrl;
 	img.alt = `Ordinal Maxi Biz #${image.id}`;
 	img.classList.add('lazyload');
-
-	let hoverTimeout; // Variable to store the hover state timeout
-
-	// Add mouseover event listener with a delay for the tooltip
-	img.addEventListener('mouseover', function(event) {
-		hoverTimeout = setTimeout(function() {
-			showTooltip(event, image);
-		}, 1000); // Delay of 1 second
-	});
-
-	// Add mouseout event listener to hide tooltip and clear the hover timeout
-	img.addEventListener('mouseout', function() {
-		clearTimeout(hoverTimeout);
-		hideTooltip();
-	});
 
 	// Append image to its container
 	imageContainer.appendChild(img);
@@ -112,10 +97,10 @@ function createGallery(mergedData) {
 
 	});
 	
+	loadHistoryData(); // Load History Data
 	initializeLazyLoad(); // After adding all images to the gallery, initialize lazy loading
     initializeFilterButtons();// Initialize filter buttons
     simulateInitialFilterClick(); // Simulate click on 'Show All' button
-
 }
 
 function extractSecondNumber(numberData) {
@@ -170,11 +155,21 @@ function initializeFilterButtons() {
 
 function filterSelection(filter) {
     const galleryItems = document.querySelectorAll('.gallery-item');
-    galleryItems.forEach(item => {
-        if (filter === 'all' || item.dataset.eyeColor === filter) {
-            item.style.display = 'block';
-        } else {
-            item.style.display = 'none';
+    const historyGallery = document.querySelector('.historyGallery');
+
+    if (filter === 'none') {
+        // Display the historyGallery and hide gallery items
+        if (historyGallery) {
+            historyGallery.style.display = 'flex'; // Or 'block', depending on your layout
         }
-    });
+        galleryItems.forEach(item => item.style.display = 'none');
+    } else {
+        // Hide the historyGallery and show/hide gallery items based on the filter
+        if (historyGallery) {
+            historyGallery.style.display = 'none';
+        }
+        galleryItems.forEach(item => {
+            item.style.display = (filter === 'all' || item.dataset.eyeColor === filter) ? 'block' : 'none';
+        });
+    }
 }

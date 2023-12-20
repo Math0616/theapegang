@@ -37,17 +37,18 @@
 			padding: 10px;
 			}
 			
-			/* Media query for mobile screens - adjust "max-width" as needed */
-			@media screen and (max-width: 700px) {
-			.gallery {
-				grid-template-columns: repeat(2, 1fr); /* 2 columns for mobile */
-				}
-
-			.filter-btn {
-				font-size: 0.8em;
-				}
-
+			
+		/* Media query for mobile screens - adjust "max-width" as needed */
+		@media screen and (max-width: 700px) {
+		.gallery {
+			grid-template-columns: repeat(2, 1fr); /* 2 columns for mobile */
 			}
+
+		.filter-btn {
+			font-size: 0.8em;
+			}
+
+		}
 
 		.gallery-item {
 			display: none; /* Set default display to none */
@@ -145,6 +146,57 @@
 			font-weight: bold;
 			z-index: 3; /* Ensure this is above other elements */
 			}
+
+		.history-row {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			justify-content: center;
+			width: 100%;
+			margin-bottom: 20px; /* Space between rows */
+			overflow: hidden; /* Hide overflow */
+		}
+
+		.history-row > div {
+			margin: 0 10px;
+			flex: 1;
+			text-align: left;
+			display: flex; /* Add flex to align text vertically */
+			align-items: center; /* Center text vertically */
+		}
+
+		.history-image {
+			max-width: 100%; /* Limits image width to the container's width */
+			max-height: 100%; /* Limits image height to the container's height */
+			object-fit: contain; /* Ensures the entire image fits within the container */
+			border-radius: 10px; /* Rounded corners for the image container */
+		}
+
+		.image-history-container {
+			width: 80px; /* Set your desired width */
+			height: 80px; /* Set your desired height */
+			border-radius: 10px; /* Rounded corners for the image container */
+			overflow: hidden; /* Hides any overflow */
+			justify-content: flex-end; /* Aligns the child items to the right */
+		}
+
+		#buttons-container {
+			display: flex;
+			justify-content: space-between; /* This will push #filter-buttons to the left and #history-button-container to the right */
+			align-items: center; /* This will vertically align them if they have different heights */
+		}
+
+		#filter-container {
+			display: flex;
+			justify-content: start; /* Align to the left */
+		}
+
+		#history-button-container {
+			display: flex;
+			justify-content: end; /* Align to the right */
+			flex-grow: 1; /* Take up the remaining space */
+		}
+
 	</style>
 </head>
 <body>
@@ -152,26 +204,35 @@
 <!-- Bitcoin Address for donation here -->
 <div id="top-right-text">33bwFiruMQEN78MuBqWZsrHsVSbxnQAacS</div>
 
-	<div class="title-image">
-	<a href="https://x.com/TheApeGang" target="_blank">
-		<img src="https://theapegang.com/theapegang.png" alt="Title Image">
-	</a>
-	</div>
+<div class="title-image">
+<a href="https://x.com/TheApeGang" target="_blank">
+	<img src="https://theapegang.com/theapegang.png" alt="Title Image">
+</a>
+</div>
 
-	<!-- Filter buttons -->
-	<div id="filter-container">
-		<button class="filter-btn active" onclick="filterSelection('all')">Show All</button>
-		<button class="filter-btn" onclick="filterSelection('red')">Red Eyes (3)</button>
-		<button class="filter-btn" onclick="filterSelection('blue')">Blue Eyes (2)</button>
-		<button class="filter-btn" onclick="filterSelection('green')">Green Eyes (18)</button>
-	</div>
-
+<!-- Filter buttons -->
+<div id="buttons-container">
+    <div id="filter-container">
+        <button class="filter-btn active" onclick="filterSelection('all')">Show All</button>
+        <button class="filter-btn" onclick="filterSelection('red')">Red Eyes (3)</button>
+        <button class="filter-btn" onclick="filterSelection('blue')">Blue Eyes (2)</button>
+        <button class="filter-btn" onclick="filterSelection('green')">Green Eyes (18)</button>
+    </div>
+    <div id="history-button-container">
+        <button class="filter-btn" onclick="filterSelection('none')">History</button>
+    </div>
+</div>
 
 <div class="gallery">
 <!-- Images will be loaded here by JavaScript -->
 </div>
 
-<script src="script.js"></script> <!-- Link to your external JavaScript file -->
+<div class="historyGallery" style="display: none;">
+    <!-- History data will be loaded here by JavaScript -->
+</div>
+
+<script src="script.js"></script> <!-- 23 Apes Grid -->
+<script src="history.js"></script> <!-- Transactions history -->
 
 </body>
 </html>
