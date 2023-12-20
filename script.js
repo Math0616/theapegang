@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     Promise.all([
-        fetch('https://ordinalmaxibiz.vercel.app/api/theapegang').then(res => res.json()),
+        fetch('tokens.json').then(res => res.json()),
         fetch('images.json').then(res => res.json())
     ])
     .then(([apiData, imagesData]) => {
@@ -44,11 +44,11 @@ document.addEventListener('DOMContentLoaded', function() {
 		imageContainer.appendChild(img);
 
         // Display listed price if available
-        if (image.listed) {
-            const rawPrice = image.listedPrice / 100000000; // Convert to decimal
-            const formattedPrice = rawPrice % 1 === 0 ? rawPrice.toFixed(2) : rawPrice.toString();
-            const priceInfo = `<p class="listed-price">₿${formattedPrice}</p>`; // Add class for styling
-            imageContainer.innerHTML += priceInfo; // Append the price info to the image container
+        if (image.listedPrice && image.listedPrice !== 'undefined') {
+            const priceTag = document.createElement('div');
+            priceTag.classList.add('price-tag');
+            priceTag.textContent = `₿${image.listedPrice}`;
+            galleryItem.appendChild(priceTag);
         }
 
         // Append image container to link
