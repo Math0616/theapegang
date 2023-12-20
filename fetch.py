@@ -70,3 +70,30 @@ with open('tokens.json', 'w') as file:
     json.dump(tokens, file, indent=4)
 
 print("Tokens saved to tokens.json")
+
+def fetch_data(token_ids):
+    base_url = "https://api-mainnet.magiceden.dev/v2/ord/btc/activities?collectionSymbol=omb&kind=buying_broadcasted"
+    headers = {
+        "accept": "application/json",
+        "Authorization": f"Bearer {api_key}"
+    }
+
+    all_responses = []
+
+    for token_id in tqdm(token_ids, desc="Fetching Data"):
+        url = f"{base_url}&tokenId={token_id}"
+        response = requests.get(url, headers=headers)
+        if response.status_code == 200:
+            all_responses.append(response.json())  # Assuming JSON response
+        else:
+            print(f"Error fetching data for token {token_id}: {response.status_code}")
+
+    return all_responses
+
+data = fetch_data(token_ids)
+
+# Writing data to a JSON file
+with open('history.json', 'w') as file:
+    json.dump(data, file, indent=2)
+
+print("Data saved to history.json")
