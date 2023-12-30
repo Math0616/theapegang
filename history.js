@@ -15,8 +15,16 @@ function displayHistoryData(historyData) {
     historyGallery.style.display = 'none'; // Use flexbox to manage the layout
     historyGallery.style.flexDirection = 'column'; // Stack children elements in a column
 
-    // Flatten the array of groups into a single array of activities
-    const allActivities = historyData.flatMap(group => group.activities);
+    let allActivities = [];
+
+    // Iterate over each group ('buying_broadcasted' and 'offer_accepted_broadcasted')
+    for (let group in historyData) {
+        // Iterate over each token ID in the group
+        for (let tokenId in historyData[group]) {
+            // Concatenate the activities of each token to the allActivities array
+            allActivities = allActivities.concat(historyData[group][tokenId].activities);
+        }
+    }
 
     // Sort the activities by the 'createdAt' date in descending order
     allActivities.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
@@ -64,4 +72,5 @@ function displayHistoryData(historyData) {
         // Append row to the historyGallery
         historyGallery.appendChild(row);
     });
+
 }
