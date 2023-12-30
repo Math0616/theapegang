@@ -71,29 +71,37 @@ with open('tokens.json', 'w') as file:
 
 print("Tokens saved to tokens.json")
 
-def fetch_data(token_ids):
-    base_url = "https://api-mainnet.magiceden.dev/v2/ord/btc/activities?collectionSymbol=omb&kind=buying_broadcasted"
+def fetch_data(token_ids, fetch_type):
+    base_url = f"https://api-mainnet.magiceden.dev/v2/ord/btc/activities?collectionSymbol=omb&kind={fetch_type}"
     headers = {
         "accept": "application/json",
         "Authorization": f"Bearer {api_key}"
     }
 
-    all_responses = []
+    responses = {}
 
-    for token_id in tqdm(token_ids, desc="Fetching Data"):
+    for token_id in tqdm(token_ids, desc=f"Fetching {fetch_type} Data"):
         url = f"{base_url}&tokenId={token_id}"
         response = requests.get(url, headers=headers)
         if response.status_code == 200:
-            all_responses.append(response.json())  # Assuming JSON response
+            responses[token_id] = response.json()
         else:
             print(f"Error fetching data for token {token_id}: {response.status_code}")
 
-    return all_responses
+    return responses
 
-data = fetch_data(token_ids)
+# Fetch data for both buying_broadcasted and offer_accepted_broadcasted
+buying_broadcasted_data = fetch_data(token_ids, "buying_broadcasted")
+offer_accepted_broadcasted_data = fetch_data(token_ids, "offer_accepted_broadcasted")
 
-# Writing data to a JSON file
+# Combine data into one dictionary
+combined_data = {
+    "buying_broadcasted": buying_broadcasted_data,
+    "offer_accepted_broadcasted": offer_accepted_broadcasted_data
+}
+
+# Write combined data to a single JSON file
 with open('history.json', 'w') as file:
-    json.dump(data, file, indent=2)
+    json.dump(combined_data, file, indent=2)
 
-print("Data saved to history.json")
+print("Combined data saved to history.json")
