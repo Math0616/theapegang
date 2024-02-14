@@ -394,10 +394,6 @@
       "total": 0,
       "activities": []
     },
-    "eb1ce372c14bd736e14f3287587ba779ec8b5d7c0d20d3ead4bc711163eec561i0": {
-      "total": 0,
-      "activities": []
-    },
     "197381205a2f3528be0bc965088220dd092bf993d40469a43392c9671aa75817i0": {
       "total": 0,
       "activities": []
@@ -469,54 +465,6 @@
     "aaf75d277513aef8bfead6defdcf98cdb42facc075bc62afd3bab5bc3a85dca9i0": {
       "total": 0,
       "activities": []
-    },
-    "8c6a3038de3aafd48270b8891d211437cd0444a37af821b1fd85d430cc4e90fdi0": {
-      "total": 0,
-      "activities": [
-        {
-          "kind": "buying_broadcasted",
-          "tokenId": "8c6a3038de3aafd48270b8891d211437cd0444a37af821b1fd85d430cc4e90fdi0",
-          "chain": "btc",
-          "collectionSymbol": "omb",
-          "collection": {
-            "symbol": "omb",
-            "name": "Ordinal Maxi Biz (OMB)",
-            "imageURI": "https://bafybeidb7ltjitqivbcp22iktp5vmciee4dwzrjobwjnlzt5dkgyepj5ne.ipfs.nftstorage.link/",
-            "chain": "btc",
-            "labels": []
-          },
-          "token": {
-            "inscriptionNumber": "237631",
-            "contentURI": "https://ord-mirror.magiceden.dev/content/8c6a3038de3aafd48270b8891d211437cd0444a37af821b1fd85d430cc4e90fdi0",
-            "contentType": "image/jpeg",
-            "contentBody": null,
-            "contentPreviewURI": "https://ord-mirror.magiceden.dev/preview/8c6a3038de3aafd48270b8891d211437cd0444a37af821b1fd85d430cc4e90fdi0",
-            "meta": {
-              "name": "",
-              "attributes": [
-                {
-                  "value": "red",
-                  "trait_type": "color"
-                }
-              ]
-            },
-            "satRarity": "common",
-            "satBlockHeight": 53454,
-            "satBlockTime": "Wed, 28 Apr 2010 06:24:50 GMT",
-            "domain": null
-          },
-          "createdAt": "Sun, 07 May 2023 01:13:39 GMT",
-          "tokenInscriptionNumber": 237631,
-          "listedPrice": 26900000,
-          "oldLocation": "d739e74922573226220191f2cd196339beeeed45cb5075ada1386e72b33f4cfd:0:0",
-          "oldOwner": "bc1pg8jywvphzeyf9fg8tsac6jq7ft2dzz7pez720r6uanumn6lyayeshg46es",
-          "newOwner": "bc1pxlnj4cklppmz5zmg3c8ef76f6ed9979t3etkakkrhtglf8r0p8ls4psa43",
-          "txValue": 0,
-          "txId": "6b928304b0e136da390768052d0146b83cfb0f3a5d4535432fcda049290a6336",
-          "sellerPaymentReceiverAddress": null,
-          "buyerPaymentAddress": null
-        }
-      ]
     },
     "2455c3b97ad97be251ca4c82a0da66c1c583e218e3e527d2f87ed61bdcdc7018i0": {
       "total": 0,
