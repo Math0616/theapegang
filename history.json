@@ -329,6 +329,50 @@
             "satBlockTime": "Fri, 09 Jan 2009 03:54:39 GMT",
             "domain": null
           },
+          "createdAt": "Mon, 04 Mar 2024 00:19:32 GMT",
+          "tokenInscriptionNumber": 11272898,
+          "listedPrice": 150000000,
+          "oldLocation": "3e86948348c85dbff73803f52913b912e94113b04d50bdb0a1b1531d6fd7285d:1:0",
+          "oldOwner": "bc1p4mlucg4zxmtvnf8vvz4ydg7k2l4nua0ju57lx8aayrhr38e3vzps3ktgqk",
+          "newOwner": "bc1p5temv3mzk3mx0ah2srkz9vdan3t0r7t3kwy4uhx5gskavyzlqdas59fsq7",
+          "txValue": 0,
+          "txId": "6cfa069d8834264b09c1dedc40ef3898bcec7ae64da53a8b146577921c26a75d",
+          "sellerPaymentReceiverAddress": "33bwFiruMQEN78MuBqWZsrHsVSbxnQAacS",
+          "buyerPaymentAddress": "3GjbqZdMd52KXestULRRauPpvPZpuDGqpe",
+          "selectedFeeType": "fastestFee"
+        },
+        {
+          "kind": "buying_broadcasted",
+          "tokenId": "274c88a15f15cf506a3891eb11665ce39d39d3346ac4ab2c5808c2b5587a0611i0",
+          "chain": "btc",
+          "collectionSymbol": "omb",
+          "collection": {
+            "symbol": "omb",
+            "name": "Ordinal Maxi Biz (OMB)",
+            "imageURI": "https://bafybeidb7ltjitqivbcp22iktp5vmciee4dwzrjobwjnlzt5dkgyepj5ne.ipfs.nftstorage.link/",
+            "chain": "btc",
+            "labels": []
+          },
+          "token": {
+            "inscriptionNumber": "11272898",
+            "contentURI": "https://ord-mirror.magiceden.dev/content/274c88a15f15cf506a3891eb11665ce39d39d3346ac4ab2c5808c2b5587a0611i0",
+            "contentType": "image/webp",
+            "contentBody": null,
+            "contentPreviewURI": "https://ord-mirror.magiceden.dev/preview/274c88a15f15cf506a3891eb11665ce39d39d3346ac4ab2c5808c2b5587a0611i0",
+            "meta": {
+              "name": "Ordinal Maxi Biz #1099",
+              "attributes": [
+                {
+                  "value": "green",
+                  "trait_type": "color"
+                }
+              ]
+            },
+            "satRarity": "common",
+            "satBlockHeight": 9,
+            "satBlockTime": "Fri, 09 Jan 2009 03:54:39 GMT",
+            "domain": null
+          },
           "createdAt": "Sat, 01 Jul 2023 07:34:42 GMT",
           "tokenInscriptionNumber": 11272898,
           "listedPrice": 32690000,
