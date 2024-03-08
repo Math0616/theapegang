@@ -446,54 +446,6 @@
       "total": 0,
       "activities": []
     },
-    "a94b61899dd21ca361c1b0452f025273491dd756fa8a1024fea5d635a5f50cd3i0": {
-      "total": 0,
-      "activities": [
-        {
-          "kind": "buying_broadcasted",
-          "tokenId": "a94b61899dd21ca361c1b0452f025273491dd756fa8a1024fea5d635a5f50cd3i0",
-          "chain": "btc",
-          "collectionSymbol": "omb",
-          "collection": {
-            "symbol": "omb",
-            "name": "Ordinal Maxi Biz (OMB)",
-            "imageURI": "https://bafybeidb7ltjitqivbcp22iktp5vmciee4dwzrjobwjnlzt5dkgyepj5ne.ipfs.nftstorage.link/",
-            "chain": "btc",
-            "labels": []
-          },
-          "token": {
-            "inscriptionNumber": "10613968",
-            "contentURI": "https://ord-mirror.magiceden.dev/content/a94b61899dd21ca361c1b0452f025273491dd756fa8a1024fea5d635a5f50cd3i0",
-            "contentType": "image/webp",
-            "contentBody": null,
-            "contentPreviewURI": "https://ord-mirror.magiceden.dev/preview/a94b61899dd21ca361c1b0452f025273491dd756fa8a1024fea5d635a5f50cd3i0",
-            "meta": {
-              "name": "Ordinal Maxi Biz #1920",
-              "attributes": [
-                {
-                  "value": "green",
-                  "trait_type": "color"
-                }
-              ]
-            },
-            "satRarity": "common",
-            "satBlockHeight": 9,
-            "satBlockTime": "Fri, 09 Jan 2009 03:54:39 GMT",
-            "domain": null
-          },
-          "createdAt": "Wed, 12 Jul 2023 12:56:12 GMT",
-          "tokenInscriptionNumber": 10613968,
-          "listedPrice": 26990000,
-          "oldLocation": "c81c62e9870c85f8a3379efafc50a5924914e8af1b00d610aba97307f697f3e4:0:0",
-          "oldOwner": "bc1p253plmckmuept9nalz5qn8p07vugq6jvdv3m2lf86sxwes2gl93sllpuqm",
-          "newOwner": "bc1pn462877c5r47g52t2pkhn537y76jfl6psyt9glqshn65r4dak5mspn2ds6",
-          "txValue": 0,
-          "txId": "b8329e62bd5b8ae155d86ae1881e298c294443fdda90af5895c748c87f0f36ea",
-          "sellerPaymentReceiverAddress": "3Nr6TqFY7XrLoCgAZy243CBhZTiYLMkFg5",
-          "buyerPaymentAddress": "38Ui79WXgsA4ZhrRAze8m2BZRi1inW2iLB"
-        }
-      ]
-    },
     "e41016471516f47f2e61ac5a20b25e0d0ff3d17eb7067436e4116a4101321f14i0": {
       "total": 0,
       "activities": []
@@ -628,6 +580,10 @@
       "total": 0,
       "activities": []
     },
+    "fdaa88df756982aa81d0119f0b474c53531a879389bc8990b37f0e9c66afe0bdi0": {
+      "total": 0,
+      "activities": []
+    },
     "5f619cedcfc6febbf2a8207209867f5d485e97cc53627f1f3f3369b1ef3f72bbi0": {
       "total": 0,
       "activities": []
@@ -649,10 +605,6 @@
       "activities": []
     },
     "274c88a15f15cf506a3891eb11665ce39d39d3346ac4ab2c5808c2b5587a0611i0": {
-      "total": 0,
-      "activities": []
-    },
-    "e6310718d1ac8d381f52fbedc9a85b917f755bb37325ea497565a3920299e45ai0": {
       "total": 0,
       "activities": []
     },
