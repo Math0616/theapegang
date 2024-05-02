@@ -3,53 +3,6 @@
     "4cf9254ac5496b1c8b7779c048c6837d0cfede5ba5b7e2d8b19cad2de9fdf127i0": {
       "activities": []
     },
-    "1eb0f0f509cf9d2cf1686e4fe15f0f3f54d55c0331cb5965a91a4e2efac22a3fi0": {
-      "activities": [
-        {
-          "kind": "buying_broadcasted",
-          "tokenId": "1eb0f0f509cf9d2cf1686e4fe15f0f3f54d55c0331cb5965a91a4e2efac22a3fi0",
-          "chain": "btc",
-          "collectionSymbol": "omb",
-          "collection": {
-            "symbol": "omb",
-            "name": "Ordinal Maxi Biz (OMB)",
-            "imageURI": "https://bafybeidb7ltjitqivbcp22iktp5vmciee4dwzrjobwjnlzt5dkgyepj5ne.ipfs.nftstorage.link/",
-            "chain": "btc",
-            "labels": []
-          },
-          "token": {
-            "inscriptionNumber": "11305244",
-            "contentURI": "https://ord-mirror.magiceden.dev/content/1eb0f0f509cf9d2cf1686e4fe15f0f3f54d55c0331cb5965a91a4e2efac22a3fi0",
-            "contentType": "image/webp",
-            "contentBody": null,
-            "contentPreviewURI": "https://ord-mirror.magiceden.dev/preview/1eb0f0f509cf9d2cf1686e4fe15f0f3f54d55c0331cb5965a91a4e2efac22a3fi0",
-            "meta": {
-              "name": "Ordinal Maxi Biz #445",
-              "attributes": [
-                {
-                  "value": "green",
-                  "trait_type": "color"
-                }
-              ]
-            },
-            "satRarity": "common",
-            "satBlockHeight": 9,
-            "satBlockTime": "Fri, 09 Jan 2009 03:54:39 GMT",
-            "domain": null
-          },
-          "createdAt": "Thu, 29 Jun 2023 16:32:32 GMT",
-          "tokenInscriptionNumber": 11305244,
-          "listedPrice": 35000000,
-          "oldLocation": "8466f0a8c6a10118be73fe6d1012c53c3b55515b90743f3824c30dcc4ec9c150:1:0",
-          "oldOwner": "bc1pnq62yscql8x4kq7mnx7jkt5d03txn08zjqrvgsgumdvpk4gw8dgsl4k98k",
-          "newOwner": "bc1pw302ztwjczua709dpw0zd7gc564qumcrl28euk6jg3dr4mw28ncqs8at58",
-          "txValue": 0,
-          "txId": "d232fc9187c7a6d22938ae524d856c460d47915de78f3100e1b2aa50755c9b62",
-          "sellerPaymentReceiverAddress": "3JimMYGS1ugkExrZJtBFx4qd25gcYNbChU",
-          "buyerPaymentAddress": "bc1q4nnqpk7ep6zwd6s4v7h8420ulce388p79keqdz"
-        }
-      ]
-    },
     "fdaa88df756982aa81d0119f0b474c53531a879389bc8990b37f0e9c66afe0bdi0": {
       "activities": [
         {
@@ -423,9 +376,6 @@
           "buyerPaymentAddress": "bc1prny7hyyqet3g6766p85yvdmd0mv3hhzxjf4k89fz4sx2x4kq3sfsf0das9"
         }
       ]
-    },
-    "95f77c6f696519f3f992d421f2f4596fb5147b73e6c86896307e1ac747d40ef3i0": {
-      "activities": []
     },
     "eb1ce372c14bd736e14f3287587ba779ec8b5d7c0d20d3ead4bc711163eec561i0": {
       "activities": []
