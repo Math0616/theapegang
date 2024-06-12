@@ -1,8 +1,5 @@
 {
   "buying_broadcasted": {
-    "4cf9254ac5496b1c8b7779c048c6837d0cfede5ba5b7e2d8b19cad2de9fdf127i0": {
-      "activities": []
-    },
     "1eb0f0f509cf9d2cf1686e4fe15f0f3f54d55c0331cb5965a91a4e2efac22a3fi0": {
       "activities": [
         {
@@ -423,6 +420,9 @@
           "buyerPaymentAddress": "bc1prny7hyyqet3g6766p85yvdmd0mv3hhzxjf4k89fz4sx2x4kq3sfsf0das9"
         }
       ]
+    },
+    "95f77c6f696519f3f992d421f2f4596fb5147b73e6c86896307e1ac747d40ef3i0": {
+      "activities": []
     },
     "eb1ce372c14bd736e14f3287587ba779ec8b5d7c0d20d3ead4bc711163eec561i0": {
       "activities": []
