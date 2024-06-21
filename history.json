@@ -6,6 +6,7 @@
     "1eb0f0f509cf9d2cf1686e4fe15f0f3f54d55c0331cb5965a91a4e2efac22a3fi0": {
       "activities": [
         {
+          "id": "ad28927c-c046-4295-93b2-4913e0b0c932",
           "kind": "buying_broadcasted",
           "tokenId": "1eb0f0f509cf9d2cf1686e4fe15f0f3f54d55c0331cb5965a91a4e2efac22a3fi0",
           "chain": "btc",
@@ -53,6 +54,7 @@
     "fdaa88df756982aa81d0119f0b474c53531a879389bc8990b37f0e9c66afe0bdi0": {
       "activities": [
         {
+          "id": "27473ee7-6385-46f5-99f9-c6f14f0a1e7b",
           "kind": "buying_broadcasted",
           "tokenId": "fdaa88df756982aa81d0119f0b474c53531a879389bc8990b37f0e9c66afe0bdi0",
           "chain": "btc",
@@ -96,6 +98,7 @@
           "buyerPaymentAddress": "343FoQWSeUkezSZXhsrnTxEQkpKPXWQMV7"
         },
         {
+          "id": "008d2602-8cb9-463f-8d7a-1fcac26da24e",
           "kind": "buying_broadcasted",
           "tokenId": "fdaa88df756982aa81d0119f0b474c53531a879389bc8990b37f0e9c66afe0bdi0",
           "chain": "btc",
@@ -143,6 +146,7 @@
     "5f619cedcfc6febbf2a8207209867f5d485e97cc53627f1f3f3369b1ef3f72bbi0": {
       "activities": [
         {
+          "id": "47b7f59c-9f06-4176-881e-005d17c4954f",
           "kind": "buying_broadcasted",
           "tokenId": "5f619cedcfc6febbf2a8207209867f5d485e97cc53627f1f3f3369b1ef3f72bbi0",
           "chain": "btc",
@@ -199,6 +203,7 @@
     "65d7e13b550d7ddc4be9cd24cdc7b69fab436c663320b772083fde4824336dcbi0": {
       "activities": [
         {
+          "id": "cb1894d8-2e22-4ab8-949e-dd8d0abc1759",
           "kind": "buying_broadcasted",
           "tokenId": "65d7e13b550d7ddc4be9cd24cdc7b69fab436c663320b772083fde4824336dcbi0",
           "chain": "btc",
@@ -242,6 +247,7 @@
           "buyerPaymentAddress": "36tSRYqkwVDUf8PPFUY94DLK9kDhkbRF3M"
         },
         {
+          "id": "2c7cfcca-66d5-418f-9e4c-995949fc684d",
           "kind": "buying_broadcasted",
           "tokenId": "65d7e13b550d7ddc4be9cd24cdc7b69fab436c663320b772083fde4824336dcbi0",
           "chain": "btc",
@@ -289,6 +295,7 @@
     "274c88a15f15cf506a3891eb11665ce39d39d3346ac4ab2c5808c2b5587a0611i0": {
       "activities": [
         {
+          "id": "162150c9-5251-4558-ab6c-c07841bf1c81",
           "kind": "buying_broadcasted",
           "tokenId": "274c88a15f15cf506a3891eb11665ce39d39d3346ac4ab2c5808c2b5587a0611i0",
           "chain": "btc",
@@ -333,6 +340,7 @@
           "selectedFeeType": "fastestFee"
         },
         {
+          "id": "97beef69-5f81-4cac-9775-6d9ddc24c865",
           "kind": "buying_broadcasted",
           "tokenId": "274c88a15f15cf506a3891eb11665ce39d39d3346ac4ab2c5808c2b5587a0611i0",
           "chain": "btc",
@@ -380,6 +388,7 @@
     "e6310718d1ac8d381f52fbedc9a85b917f755bb37325ea497565a3920299e45ai0": {
       "activities": [
         {
+          "id": "de82b2ba-6336-4f06-8ba8-1fa7f2f63c75",
           "kind": "buying_broadcasted",
           "tokenId": "e6310718d1ac8d381f52fbedc9a85b917f755bb37325ea497565a3920299e45ai0",
           "chain": "btc",
@@ -436,6 +445,7 @@
     "a94b61899dd21ca361c1b0452f025273491dd756fa8a1024fea5d635a5f50cd3i0": {
       "activities": [
         {
+          "id": "1f7b0fcd-a6eb-49cb-8a42-f6bb81b919c0",
           "kind": "buying_broadcasted",
           "tokenId": "a94b61899dd21ca361c1b0452f025273491dd756fa8a1024fea5d635a5f50cd3i0",
           "chain": "btc",
@@ -498,6 +508,7 @@
     "8c6a3038de3aafd48270b8891d211437cd0444a37af821b1fd85d430cc4e90fdi0": {
       "activities": [
         {
+          "id": "8b85d5e1-286a-4578-bb91-3b3fd0ec177a",
           "kind": "buying_broadcasted",
           "tokenId": "8c6a3038de3aafd48270b8891d211437cd0444a37af821b1fd85d430cc4e90fdi0",
           "chain": "btc",
@@ -545,6 +556,7 @@
     "2455c3b97ad97be251ca4c82a0da66c1c583e218e3e527d2f87ed61bdcdc7018i0": {
       "activities": [
         {
+          "id": "77368dfe-697f-476d-b1c3-6efa072d91bc",
           "kind": "buying_broadcasted",
           "tokenId": "2455c3b97ad97be251ca4c82a0da66c1c583e218e3e527d2f87ed61bdcdc7018i0",
           "chain": "btc",
